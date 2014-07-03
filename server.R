@@ -30,5 +30,5 @@ shinyServer(function(input, output) {
     
     cat("\n== attached packages ==\n")
     print(search())
-})
+  })
 })

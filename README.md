@@ -3,7 +3,10 @@ Poppr-shiny
 
 This site provides elements of a shiny app for population genetics in R based on the *poppr* R package and related packages.
 
-**NOTE:** This app is not currenlty functional and is in development.
+**NOTE:** 
+
+- This app is not currenlty functional and is in development.
+- App will not work in Internet Explorer.
 
 This site was built solely with open source components.
 

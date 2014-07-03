@@ -18,4 +18,18 @@ shinyServer(function(input, output) {
     read.csv(inFile$datapath, header=input$header, sep=input$sep, quote=input$quote)
   })
   
+  output$systeminfo <- renderPrint({
+    cat("\n== R version ==\n")
+    print(R.version)
+    
+    cat("\n== Date ==\n")
+    print(date())
+    
+    cat("\n== poppr version ==\n")
+    print(packageDescription("poppr", fields=c("Package", "Version", "Date", "Built")))
+    
+    cat("\n== attached packages ==\n")
+    print(search())
+  })
+  
 })

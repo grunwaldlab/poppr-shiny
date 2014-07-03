@@ -1,14 +1,13 @@
 Poppr-shiny
 ===========
 
-This site provides elements of a shiny app for population genetics in R based on the *poppr* R package and related packages.
+This app provides basic tools for population genetic analyses in R based on the *poppr* and related R packages.
 
 **NOTE:** 
 
-- This app is not currenlty functional and is in development.
-- App will not work in Internet Explorer.
+- This app is not currenlty functional and is under development.
+- This app will not work in Internet Explorer.
 
-This site was built solely with open source components.
+Our app was built solely with open source components.
 
 Designed and built by members of the [Grunwald lab](http://grunwaldlab.cgrb.oregonstate.edu). 
-

@@ -3,7 +3,7 @@ library(shiny)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   
-  output$data <- renderTable({
+  output$loaddata <- renderTable({
     
     # input$file1 will be NULL initially. After the user selects and uploads a 
     # file, it will be a data frame with 'name', 'size', 'type', and 'datapath' 
@@ -16,6 +16,7 @@ shinyServer(function(input, output) {
       return(NULL)
     
     read.csv(inFile$datapath, header=input$header, sep=input$sep, quote=input$quote)
+    
   })
   
   output$sessioninfo <- renderPrint({
@@ -30,5 +31,7 @@ shinyServer(function(input, output) {
     
     cat("\n== attached packages ==\n")
     print(search())
+    
   })
+  
 })

@@ -3,7 +3,7 @@ shinyUI(
      theme = "bootstrap.css",
          tabPanel("Load data",
               sidebarPanel(
-                fileInput('file1', 'Load file',
+                fileInput('file1', 'Load data',
                           accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
                 tags$hr(),
                 checkboxInput('header', 'Header', TRUE),
@@ -14,11 +14,11 @@ shinyUI(
                              'Comma')
               ),
               mainPanel(
-                tableOutput('data')
+                tableOutput('loaddata')
               )
          ),
      navbarMenu("Analysis",
-        tabPanel("Poppr", verbatimTextOutput("poppr")),
+        tabPanel("Poppr"),
         tabPanel("More")
       ),
      navbarMenu("Help",

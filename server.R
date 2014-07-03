@@ -3,7 +3,7 @@ library(shiny)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   
-  output$contents <- renderTable({
+  output$data <- renderTable({
     
     # input$file1 will be NULL initially. After the user selects and uploads a 
     # file, it will be a data frame with 'name', 'size', 'type', and 'datapath' 

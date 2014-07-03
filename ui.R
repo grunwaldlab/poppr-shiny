@@ -14,15 +14,16 @@ shinyUI(
                                      'Comma')
                       ),
                       mainPanel(
-                        tableOutput('contents')
+                        tableOutput('data')
                       )
              ),
              navbarMenu("Analysis",
                 tabPanel("Poppr", verbatimTextOutput("poppr")),
                 tabPanel("More")),
-             tabPanel("Help"),
-             tabPanel("Session info", verbatimTextOutput("sessioninfo"))
-             
+             navbarMenu("Help",
+                tabPanel("Help"),
+                tabPanel("Session info", verbatimTextOutput("sessioninfo"))
+             )
       # application UI              
 ))
 

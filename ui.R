@@ -6,10 +6,11 @@ shinyUI(
              theme = "bootstrap.css",
              tabPanel("Load data"),
              navbarMenu("Analysis",
-                tabPanel("Poppr", verbatimTextOutput("poppr")),
+                tabPanel("Poppr"),
                 tabPanel("More")),
-             tabPanel("Help"),
-             tabPanel("System info", verbatimTextOutput("systeminfo")),
+             navbarMenu("Help",
+                tabPanel("Help", verbatimTextOutput("help")),
+                tabPanel("Session info", verbatimTextOutput("sessioninfo"))),
              sidebarPanel(
                fileInput('file1', 'Load file',
                          accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
@@ -22,7 +23,7 @@ shinyUI(
                             'Comma')
                ),
    mainPanel(
-            tableOutput('contents')
+            tableOutput('load_data')
             )
              
       # application UI              

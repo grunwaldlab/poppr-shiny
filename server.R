@@ -1,35 +1,13 @@
-library(shiny)
-
-# Define server logic required to draw a histogram
-shinyServer(function(input, output) {
-  
-  output$load_data <- renderTable({
-    
-    # input$file1 will be NULL initially. After the user selects and uploads a 
-    # file, it will be a data frame with 'name', 'size', 'type', and 'datapath' 
-    # columns. The 'datapath' column will contain the local filenames where the 
-    # data can be found.
-    
-    inFile <- input$file1
-    
-    if (is.null(inFile))
-      return(NULL)
-    
-    read.csv(inFile$datapath, header=input$header, sep=input$sep, quote=input$quote)
+shinyServer(function(input, output, session) {
+  output$plot <- renderPlot({
+    plot(cars, type=input$plotType)
   })
   
-  output$sessioninfo <- renderPrint({
-    cat("\n== R version ==\n")
-    print(R.version)
-    
-    cat("\n== Date ==\n")
-    print(date())
-    
-    cat("\n== poppr version ==\n")
-    print(packageDescription("poppr", fields=c("Package", "Version", "Date", "Built")))
-    
-    cat("\n== attached packages ==\n")
-    print(search())
+  output$summary <- renderPrint({
+    summary(cars)
   })
   
+  output$table <- renderDataTable({
+    cars
+  }, options=list(iDisplayLength=10))
 })

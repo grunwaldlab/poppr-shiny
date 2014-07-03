@@ -1,5 +1,5 @@
 shinyUI(
-  navbarPage("Population Genetics in R",
+  navbarPage("Population Genetics | Poppr R",
      theme = "bootstrap.css",
          tabPanel("Load data",
               sidebarPanel(
@@ -17,9 +17,10 @@ shinyUI(
                 tableOutput('loaddata')
               )
          ),
-     navbarMenu("Analysis",
+     navbarMenu("Analyses",
         tabPanel("Poppr"),
-        tabPanel("More")
+        tabPanel("AMOVA"),
+        tabPanel("Other")
       ),
      navbarMenu("Help",
         tabPanel("Help"),

@@ -18,7 +18,7 @@ shinyServer(function(input, output) {
     read.csv(inFile$datapath, header=input$header, sep=input$sep, quote=input$quote)
   })
   
-  output$systeminfo <- renderPrint({
+  output$sessioninfo <- renderPrint({
     cat("\n== R version ==\n")
     print(R.version)
     

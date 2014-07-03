@@ -6,7 +6,7 @@ shinyUI(
                 tabPanel("Poppr", verbatimTextOutput("poppr")),
                 tabPanel("More")),
              tabPanel("Help"),
-             tabPanel("System info", verbatimTextOutput("systeminfo")),
+             tabPanel("Session info", verbatimTextOutput("sessioninfo")),
              sidebarPanel(
                fileInput('file1', 'Load file',
                          accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),

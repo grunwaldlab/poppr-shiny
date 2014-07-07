@@ -1,3 +1,7 @@
+library(shiny)
+library(markdown)
+library(poppr)
+
 shinyUI(
   navbarPage("Population Genetics | Poppr R",
      theme = "bootstrap.css",
@@ -23,14 +27,20 @@ shinyUI(
         tabPanel("Other")
       ),
      navbarMenu("Help",
-        tabPanel("Help"),
+        tabPanel("About",
+            fluidRow(
+                column(6,
+                includeMarkdown("about.md")
+            )
+            )
+      ),
         tabPanel("Session info", verbatimTextOutput("sessioninfo")
-      )
+      ))
   )
   
 # application UI
   
   
   
-))
+)
 

@@ -3,14 +3,14 @@ library(markdown)
 library(poppr)
 
 shinyUI(
-  navbarPage("Population Genetics | Poppr R",
-     theme = "bootstrap.css",
-         tabPanel("Load data",
+  navbarPage('Population Genetics in R',
+     theme = 'bootstrap.css',
+         tabPanel('Load data',
               sidebarPanel(
                 fileInput('file1', 'Load data',
                           accept=c('text/csv', 'text/comma-separated-values,text/plain', '.csv')),
-                tags$hr(),
-                checkboxInput('header', 'Header', TRUE),
+#                tags$hr(),
+                checkboxInput('header', 'Header', FALSE),
                 radioButtons('sep', 'Separator',
                              c(Comma=',',
                                Semicolon=';',
@@ -21,26 +21,33 @@ shinyUI(
                 tableOutput('loaddata')
               )
          ),
-     navbarMenu("Analyses",
-        tabPanel("Poppr"),
-        tabPanel("AMOVA"),
-        tabPanel("Other")
+     navbarMenu('Analyses',
+        tabPanel('Poppr',
+                headerPanel('Poppr analysis'),
+                sidebarPanel(
+                  checkboxInput('clone', 'Clone correct', FALSE),
+                  numericInput('resample', 'Permutation sample:', value = 0)
+                ),
+              mainPanel(
+                tableOutput('poppr')
+              )
+          ),
+        tabPanel('AMOVA'),
+        tabPanel('Other')
       ),
-     navbarMenu("Help",
-        tabPanel("About",
+     navbarMenu('Help',
+        tabPanel('About',
             fluidRow(
                 column(6,
-                includeMarkdown("about.md")
+                includeMarkdown('about.md')
             )
             )
       ),
-        tabPanel("Session info", verbatimTextOutput("sessioninfo")
+        tabPanel('Session info', verbatimTextOutput('sessioninfo')
       ))
   )
   
 # application UI
-  
-  
   
 )
 

@@ -1,24 +1,42 @@
 library(shiny)
+library(poppr)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   
-  output$loaddata <- renderTable({
-    
-    # input$file1 will be NULL initially. After the user selects and uploads a 
-    # file, it will be a data frame with 'name', 'size', 'type', and 'datapath' 
-    # columns. The 'datapath' column will contain the local filenames where the 
-    # data can be found.
-    
+  mydata <- reactive({
+  
     inFile <- input$file1
     
     if (is.null(inFile))
       return(NULL)
     
     read.csv(inFile$datapath, header=input$header, sep=input$sep, quote=input$quote)
-      
   })
   
+  gen.data <- reactive({
+  
+    inFile <- input$file1
+    
+    if (is.null(inFile))
+      return(NULL)
+    
+     read.genalex(inFile$datapath, sep=input$sep) 
+  })
+
+  basicstats <- reactive({
+    poppr(gen.data(), clonecorrect=input$clone, sample = input$resample,
+      quiet=TRUE)
+  })
+  
+  output$poppr <- renderTable({
+    basicstats()
+  })
+  
+  output$loaddata <- renderTable({
+    mydata()
+  })
+
   output$sessioninfo <- renderPrint({
     cat("\n== R version ==\n")
     print(R.version)
